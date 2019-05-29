@@ -21,6 +21,7 @@ Highlighter.propTypes = {
     PropTypes.func,
     PropTypes.string
   ]),
+  highlightProps : PropTypes.object,
   sanitize: PropTypes.func,
   searchWords: PropTypes.arrayOf(
     PropTypes.oneOfType([
@@ -48,6 +49,7 @@ export default function Highlighter ({
   highlightClassName = '',
   highlightStyle = {},
   highlightTag = 'mark',
+  highlightProps,
   sanitize,
   searchWords,
   textToHighlight,
@@ -109,7 +111,8 @@ export default function Highlighter ({
           children: text,
           className: highlightClassNames,
           key: index,
-          style: highlightStyles
+          style: highlightStyles,
+          highlightProps
         }
 
         // Don't attach arbitrary props to DOM elements; this triggers React DEV warnings (https://fb.me/react-unknown-prop)
